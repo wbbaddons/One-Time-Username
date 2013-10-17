@@ -2,7 +2,7 @@
 namespace wcf\system\event\listener;
 
 /**
- * Adds usernames to blacklist.
+ * Adds usernames to One-Time Username blacklist.
  *
  * @author 	Maximilian Mader
  * @copyright	2013 Maximilian Mader
@@ -15,6 +15,12 @@ class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener 
 	 * @see	\wcf\system\event\IEventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
-		
+		if ($className == 'wcf\data\user\UserAction' && $eventName == 'finalizeAction') {
+			$parameters = $eventObj->getParameters();
+			if (isset($parameters['data']) && isset($parameters['data']['username'])) {
+				// add username to One-Time Username blacklist and rebuild WCF options
+				\wcf\system\user\OTUHandler::getInstance()->blacklistUsername($parameters['data']['username']);
+			}
+		}
 	}
 }
