@@ -13,5 +13,17 @@
 			<listenerclassname>wcf\system\event\listener\UserActionFinalizeOTUListener</listenerclassname>
 			<environment>admin</environment>
 		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\system\cronjob\DailyCleanUpCronjob</eventclassname>
+			<eventname>execute</eventname>
+			<listenerclassname>wcf\system\event\listener\DailyCleanUpCronjobExecuteOTUCleanUpListener</listenerclassname>
+			<environment>user</environment>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\system\cronjob\DailyCleanUpCronjob</eventclassname>
+			<eventname>execute</eventname>
+			<listenerclassname>wcf\system\event\listener\DailyCleanUpCronjobExecuteOTUCleanUpListener</listenerclassname>
+			<environment>admin</environment>
+		</eventlistener>
 	</import>
 </data>

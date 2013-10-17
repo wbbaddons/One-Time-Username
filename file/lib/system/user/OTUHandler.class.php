@@ -42,6 +42,21 @@ class OTUHandler extends \wcf\system\SingletonFactory {
 	}
 	
 	/**
+	 * Removes expired entries from One-Time Username blacklist
+	 */
+	public function prune() {
+		if (OTU_BLACKLIST_LIFETIME == -1) return;
+		
+		$sql = "DELETE FROM
+				wcf".WCF_N."_otu_blacklist
+			WHERE time < ?";
+		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
+		$stmt->execute(array(TIME_NOW - OTU_BLACKLIST_LIFETIME * 86400));
+		
+		$this->rebuildOption();
+	}
+	
+	/**
 	 * Rebuilds the "register_forbidden_usernames" option
 	 */
 	public function rebuildOption() {
@@ -49,15 +64,15 @@ class OTUHandler extends \wcf\system\SingletonFactory {
 		$options = \wcf\data\option\Option::getOptions();
 		
 		// delete One-Time-Usernames from WCF username blacklist
-		$blacklist = \wcf\system\Regex::compile('(?:^|\n),One-Time-Username-Start\n.*\n,One-Time-Username-End(\n|$)', \wcf\system\Regex::DOT_ALL)->replace($options['REGISTER_FORBIDDEN_USERNAMES']->optionValue, '\\1');
+		$blacklist = \wcf\system\Regex::compile('(?:^|\n),One-Time-Username-Start-DO-NOT-REMOVE\n.*\n,One-Time-Username-End-DO-NOT-REMOVE(\n|$)', \wcf\system\Regex::DOT_ALL)->replace($options['REGISTER_FORBIDDEN_USERNAMES']->optionValue, '\\1');
 		
 		// list was broken, delete leftover start or end marks
 		// everything on the list will be treated as blacklisted by hand!
-		$blacklist = str_replace(array(',One-Time-Username-Start', ',One-Time-Username-End'), '', $blacklist);
+		$blacklist = str_replace(array(',One-Time-Username-Start-DO-NOT-REMOVE', ',One-Time-Username-End-DO-NOT-REMOVE'), '', $blacklist);
 		
 		// read One-Time-Username blacklist from database
 		$condition = new \wcf\system\database\util\PreparedStatementConditionBuilder();
-		if (OTU_BLACKLIST_LIFETIME != -1) $condition->add('time > ?', array(TIME_NOW - OTU_BLACKLIST_LIFETIME * 86400));
+		if (OTU_BLACKLIST_LIFETIME > -1) $condition->add('time > ?', array(TIME_NOW - OTU_BLACKLIST_LIFETIME * 86400));
 		else $condition->add('1 = 1');
 		
 		$sql = "SELECT
@@ -75,9 +90,10 @@ class OTUHandler extends \wcf\system\SingletonFactory {
 		
 		// add One-Time Usernames to blacklist
 		if ($otUsernames !== '') {
-			$blacklist .= "\n,One-Time-Username-Start\n";
+			// leading comma, because it isn't a valid username
+			$blacklist .= "\n,One-Time-Username-Start-DO-NOT-REMOVE\n";
 			$blacklist .= $otUsernames;
-			$blacklist .= ',One-Time-Username-End';
+			$blacklist .= ',One-Time-Username-End-DO-NOT-REMOVE';
 		}
 		
 		// trim empty lines
