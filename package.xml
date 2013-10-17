@@ -2,7 +2,7 @@
 <package name="be.bastelstu.max.wcf.otu" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/package.xsd">
 	<packageinformation>
 		<packagename><![CDATA[One-Time Username]]></packagename>
-		<packagedescription><![CDATA[Prohibits the use of user names that have been used before.]]></packagedescription>
+		<packagedescription><![CDATA[Prohibits the use of usernames that have been used before.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Verbietet die Verwendung von Benutzernamen, welche bereits verwendet wurden.]]></packagedescription>
 		<isapplication>0</isapplication>
 		<version>1.0.0 Beta 1</version>
@@ -24,5 +24,6 @@
 		<instruction type="sql">install.sql</instruction>
 		<instruction type="eventListener">eventListener.xml</instruction>
 		<instruction type="option">option.xml</instruction>
+		<instruction type="language">language/*.xml</instruction>
 	</instructions>
 </package>
