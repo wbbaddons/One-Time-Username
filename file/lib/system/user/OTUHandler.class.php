@@ -32,17 +32,16 @@ class OTUHandler extends \wcf\system\SingletonFactory {
 		\wcf\system\WCF::getDB()->beginTransaction();
 		$condition = new \wcf\system\database\util\PreparedStatementConditionBuilder();
 		$condition->add('username IN (?)', array($usernames));
-		$sql = "DELETE FROM
-				wcf".WCF_N."_otu_blacklist
+		$sql = "DELETE FROM	wcf".WCF_N."_otu_blacklist
 			".$condition;
 				
 		// save username on One-Time Username blacklist
 		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
 		$stmt->execute($condition->getParameters());
 		
-		$sql = "INSERT INTO
-				wcf".WCF_N."_otu_blacklist (username, time)
-			VALUES (?, ?)";
+		$sql = "INSERT INTO	wcf".WCF_N."_otu_blacklist
+					(username, time)
+			VALUES		(?, ?)";
 		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
 		foreach ($usernames as $username) {
 			$stmt->execute(array($username, TIME_NOW));
@@ -59,9 +58,8 @@ class OTUHandler extends \wcf\system\SingletonFactory {
 	public function prune() {
 		if (OTU_BLACKLIST_LIFETIME == -1) return;
 		
-		$sql = "DELETE FROM
-				wcf".WCF_N."_otu_blacklist
-			WHERE time < ?";
+		$sql = "DELETE FROM	wcf".WCF_N."_otu_blacklist
+			WHERE		time < ?";
 		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
 		$stmt->execute(array(TIME_NOW - OTU_BLACKLIST_LIFETIME * 86400));
 		
@@ -87,11 +85,10 @@ class OTUHandler extends \wcf\system\SingletonFactory {
 		if (OTU_BLACKLIST_LIFETIME > -1) $condition->add('time > ?', array(TIME_NOW - OTU_BLACKLIST_LIFETIME * 86400));
 		else $condition->add('1 = 1');
 		
-		$sql = "SELECT
-				username
-			FROM
-				wcf".WCF_N."_otu_blacklist
-			".$condition;
+		$sql = "SELECT	username
+			FROM	wcf".WCF_N."_otu_blacklist
+			".$condition."
+			ORDER	BY username ASC";
 		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
 		$stmt->execute($condition->getParameters());
 		

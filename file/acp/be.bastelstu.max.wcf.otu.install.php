@@ -15,12 +15,10 @@ namespace be\bastelstu\max\wcf\otu;
 if (!defined('OTU_BLACKLIST_LIFETIME')) define('OTU_BLACKLIST_LIFETIME', 182);
 
 // We don't check for "lastUsernameChange > 0", if this isn't set (how ever this may happen) TIME_NOW will be used.
-$sql = "SELECT
-		oldUsername, lastUsernameChange
-	FROM
-		wcf".WCF_N."_user
-	WHERE
-		oldUsername <> ?";
+$sql = "SELECT	oldUsername, lastUsernameChange
+	FROM	wcf".WCF_N."_user
+	WHERE	oldUsername <> ?
+	ORDER	BY oldUsername ASC";
 $stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
 $stmt->execute(array(''));
 $usernames = array();
@@ -30,9 +28,9 @@ while ($row = $stmt->fetchArray()) {
 
 // blacklist the usernames that have been used before
 \wcf\system\WCF::getDB()->beginTransaction();
-$sql = "INSERT INTO
-		wcf".WCF_N."_otu_blacklist (username, time)
-	VALUES (?, ?)";
+$sql = "INSERT INTO	wcf".WCF_N."_otu_blacklist
+			(username, time)
+	VALUES		(?, ?)";
 $stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
 foreach ($usernames as $user) {
 	$stmt->execute(array($user['username'], ($user['time'] > 0) ? $user['time'] : TIME_NOW));
