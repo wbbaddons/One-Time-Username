@@ -44,7 +44,7 @@ class OTUHandler extends \wcf\system\SingletonFactory {
 				wcf".WCF_N."_otu_blacklist (username, time)
 			VALUES (?, ?)";
 		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
-		foreach($usernames as $username) {
+		foreach ($usernames as $username) {
 			$stmt->execute(array($username, TIME_NOW));
 		}
 		\wcf\system\WCF::getDB()->commitTransaction();
