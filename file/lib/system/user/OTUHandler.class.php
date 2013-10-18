@@ -17,24 +17,36 @@ class OTUHandler extends \wcf\system\SingletonFactory {
 	 * @param	string	$username
 	 */
 	public function blacklistUsername($username) {
-		if (empty($username)) return;
+		return $this->blacklistUsernames(array($username));
+	}
+	
+	/**
+	 * Adds the given username to the blacklist or updates its timestamp
+	 * 
+	 * @param	string	$username
+	 */
+	public function blacklistUsernames(array $usernames) {
+		if (empty($usernames)) return;
 		
 		// delete username if OTU-blacklisted
 		\wcf\system\WCF::getDB()->beginTransaction();
+		$condition = new \wcf\system\database\util\PreparedStatementConditionBuilder();
+		$condition->add('username IN (?)', array($usernames));
 		$sql = "DELETE FROM
 				wcf".WCF_N."_otu_blacklist
-			WHERE
-				username = ?";
+			".$condition;
 				
 		// save username on One-Time Username blacklist
 		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
-		$stmt->execute(array($username));
+		$stmt->execute($condition->getParameters());
 		
 		$sql = "INSERT INTO
 				wcf".WCF_N."_otu_blacklist (username, time)
 			VALUES (?, ?)";
 		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
-		$stmt->execute(array($username, TIME_NOW));
+		foreach($usernames as $username) {
+			$stmt->execute(array($username, TIME_NOW));
+		}
 		\wcf\system\WCF::getDB()->commitTransaction();
 		
 		// save the changed blacklist in database
