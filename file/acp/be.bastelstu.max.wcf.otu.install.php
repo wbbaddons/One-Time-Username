@@ -28,7 +28,7 @@ while ($row = $stmt->fetchArray()) {
 
 // blacklist the usernames that have been used before
 \wcf\system\WCF::getDB()->beginTransaction();
-$sql = "INSERT INTO	wcf".WCF_N."_otu_blacklist
+$sql = "INSERT INTO	wcf".WCF_N."_user_otu_blacklist_entry
 			(username, time)
 	VALUES		(?, ?)";
 $stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
