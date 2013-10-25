@@ -15,6 +15,7 @@ class DailyCleanUpCronjobExecuteOTUCleanUpListener implements \wcf\system\event\
 	 * @see	\wcf\system\event\IEventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
-		\wcf\system\user\OTUHandler::getInstance()->prune();
+		$blacklistEntryAction = new \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction(array(), 'prune');
+		$blacklistEntryAction->executeAction();
 	}
 }
