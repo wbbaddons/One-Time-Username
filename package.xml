@@ -22,7 +22,7 @@
 	<instructions type="install">
 		<instruction type="sql">install.sql</instruction>
 		<instruction type="file">file.tar</instruction>
-		<instruction type="acptemplate">acptemplate.tar</instruction>
+		<instruction type="acpTemplate">acptemplate.tar</instruction>
 		<instruction type="eventListener">eventListener.xml</instruction>
 		<instruction type="option">option.xml</instruction>
 		<instruction type="language">language/*.xml</instruction>
@@ -33,6 +33,6 @@
 		<instruction type="sql">install.sql</instruction>
 		<instruction type="sql">update_b1.sql</instruction>
 		<instruction type="file">file.tar</instruction>
-		<instruction type="acptemplate">acptemplate.tar</instruction>
+		<instruction type="acpTemplate">acptemplate.tar</instruction>
 	</instructions>
 </package>
