@@ -19,23 +19,18 @@ class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener 
 			$action = $eventObj->getActionName();
 			$parameters = $eventObj->getParameters();
 			
-			if ($action == 'update' && isset($parameters['data']) && isset($parameters['data']['oldUsername'])) {
-				// User has changed their username, therefore add the old username to One-Time-Username blacklist.
-				$blacklistEntryAction = new \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction(array(), 'create', array('data' => array('username' => $parameters['data']['oldUsername'], 'time' => TIME_NOW)));
-				$blacklistEntryAction->executeAction();
-			}
-			else if (($action == 'update' && isset($parameters['data']) && isset($parameters['data']['username'])) || $action == 'delete') {
+			if (($action == 'update' && isset($parameters['data']) && isset($parameters['data']['username'])) || $action == 'delete') {
 				// Users have been updated or deleted, therefore blacklist their (old) usernames.
 				// If updated, only add the usernames to the One-Time-Username blacklist
 				// if username has been changed (username parameter is set).
-				$usernames = array();
+				$entries = array();
 				foreach ($eventObj->getObjects() as $object) {
 					if ($object instanceof \wcf\data\user\UserEditor) {
-						$usernames[] = array('username' => $object->username, 'time' => TIME_NOW);
+						$entries[] = array('username' => $object->username, 'time' => TIME_NOW, 'userID' => ($action != 'delete') ? $object->userID : null);
 					}
 				}
 				
-				$blacklistEntryAction = new \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction(array(), 'bulkCreate', array('data' => $usernames));
+				$blacklistEntryAction = new \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction(array(), 'bulkCreate', array('data' => $entries));
 				$blacklistEntryAction->executeAction();
 			}
 		}
