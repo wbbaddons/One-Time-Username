@@ -6,7 +6,7 @@
 	<script data-relocate="true">
 		//<![CDATA[
 		$(function() {
-			// TODO
+			// TODO: See https://github.com/WoltLab/WCF/issues/1551
 			new WCF.Action.Delete('wcf\\data\\user\\otu\\blacklist\\entry\\UserOtuBlacklistEntryAction', '.jsOTURow');
 		});
 		//]]>

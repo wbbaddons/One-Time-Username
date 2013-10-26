@@ -20,8 +20,9 @@
 	</requiredpackages>
 	
 	<instructions type="install">
-		<instruction type="file">file.tar</instruction>
 		<instruction type="sql">install.sql</instruction>
+		<instruction type="file">file.tar</instruction>
+		<instruction type="acptemplate">acptemplate.tar</instruction>
 		<instruction type="eventListener">eventListener.xml</instruction>
 		<instruction type="option">option.xml</instruction>
 		<instruction type="language">language/*.xml</instruction>
@@ -30,5 +31,7 @@
 	
 	<instruction type="update" fromversion="1.0.0 Beta 1">
 		<instruction type="sql">update_b1.sql</instruction>
+		<instruction type="file">file.tar</instruction>
+		<instruction type="acptemplate">acptemplate.tar</instruction>
 	</instruction>
 </package>

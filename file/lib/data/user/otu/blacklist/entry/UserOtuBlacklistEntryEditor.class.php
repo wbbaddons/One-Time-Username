@@ -2,7 +2,7 @@
 namespace wcf\data\user\otu\blacklist\entry;
 
 /**
- * TODO
+ * Provides functions to edit OTU blacklist entries
  *
  * @author 	Maximilian Mader
  * @copyright	2013 Maximilian Mader

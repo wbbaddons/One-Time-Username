@@ -26,7 +26,24 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
 	 * Resets cache if any of the listed actions is invoked
 	 * @var	array<string>
 	 */
-	protected $resetCache = array('create', 'delete', 'toggle', 'update', 'updatePosition', 'prune');
+	protected $resetCache = array('create', 'delete', 'toggle', 'update', 'updatePosition', 'prune', 'bulkCreate');
+	
+	
+	/**
+	 * Adds the given usernames to the OTU-blacklist
+	 */
+	public function bulkCreate() {
+		\wcf\system\WCF::getDB()->beginTransaction();
+		// prevent duplicate entries
+		call_user_func(array($this->className, 'deleteAll'), array_map(function($element) {
+			return $element['username'];
+		}, $this->parameters['data']));
+		
+		foreach ($this->parameters['data'] as $entry) {
+			call_user_func(array($this->className, 'create'), $entry);
+		}
+		\wcf\system\WCF::getDB()->commitTransaction();
+	}
 	
 	/**
 	 * Removes expired entries from One-Time Username blacklist

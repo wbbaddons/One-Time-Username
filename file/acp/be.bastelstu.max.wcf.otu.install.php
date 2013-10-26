@@ -38,4 +38,4 @@ foreach ($usernames as $user) {
 \wcf\system\WCF::getDB()->commitTransaction();
 
 // rebuild the corresponding option
-\wcf\system\user\OTUHandler::getInstance()->rebuildOption();
+\wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor::resetCache();
