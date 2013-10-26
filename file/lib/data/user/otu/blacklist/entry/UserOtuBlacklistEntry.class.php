@@ -19,12 +19,7 @@ class UserOtuBlacklistEntry extends \wcf\data\DatabaseObject {
 	/**
 	 * @see	\wcf\data\DatabaseObject::$databaseTableIndexName
 	 */
-	protected static $databaseTableIndexName = 'username';
-	
-	/**
-	 * @see \wcf\data\DatabaseObject::$databaseTableIndexIsIdentity
-	 */
-	protected static $databaseTableIndexIsIdentity = false;
+	protected static $databaseTableIndexName = 'entryID';
 	
 	/**
 	 * Removes contents between OTU start and end marks (e.g. ",One-Time-Username-Start-DO-NOT-REMOVE").

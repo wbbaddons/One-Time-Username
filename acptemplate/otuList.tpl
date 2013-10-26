@@ -6,7 +6,6 @@
 	<script data-relocate="true">
 		//<![CDATA[
 		$(function() {
-			// TODO: See https://github.com/WoltLab/WCF/issues/1551
 			new WCF.Action.Delete('wcf\\data\\user\\otu\\blacklist\\entry\\UserOtuBlacklistEntryAction', '.jsOTURow');
 		});
 		//]]>
@@ -47,7 +46,7 @@
 				{foreach from=$objects item=entry}
 					<tr class="jsOTURow">
 						<td class="columnIcon">
-							<span class="icon icon16 icon-remove jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->username}" data-confirm-message="{lang}wcf.acp.otu.delete.sure{/lang}"></span>
+							<span class="icon icon16 icon-remove jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->entryID}" data-confirm-message="{lang}wcf.acp.otu.delete.sure{/lang}"></span>
 							
 							{event name='rowButtons'}
 						</td>

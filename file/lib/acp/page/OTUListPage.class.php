@@ -41,5 +41,5 @@ class OTUListPage extends SortablePage {
 	/**
 	 * @see	\wcf\page\SortablePage::$validSortFields
 	 */
-	public $validSortFields = array('username', 'time', 'lastOwner', 'userID');
+	public $validSortFields = array('username', 'time', 'lastOwner', 'userID', 'entryID');
 }
