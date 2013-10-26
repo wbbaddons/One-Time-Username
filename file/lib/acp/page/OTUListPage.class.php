@@ -12,7 +12,7 @@ use wcf\page\SortablePage;
  * @subpackage	acp.page
  * @category	Community Framework
  */
-class OtuListPage extends SortablePage {
+class OTUListPage extends SortablePage {
 	/**
 	 * @see	\wcf\page\AbstractPage::$activeMenuItem
 	 */
