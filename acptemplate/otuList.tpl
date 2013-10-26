@@ -1,7 +1,7 @@
-{include file='header' pageTitle='wcf.acp.otu.list'}
+{include file='header' pageTitle='wcf.acp.user.otu.list'}
 
 <header class="boxHeadline">
-	<h1>{lang}wcf.acp.otu.list{/lang}</h1>
+	<h1>{lang}wcf.acp.user.otu.list{/lang}</h1>
 	
 	<script data-relocate="true">
 		//<![CDATA[
@@ -30,14 +30,14 @@
 {if $objects|count}
 	<div class="tabularBox tabularBoxTitle marginTop">
 		<header>
-			<h2>{lang}wcf.acp.otu.list{/lang} <span class="badge badgeInverse">{#$items}</span></h2>
+			<h2>{lang}wcf.acp.user.otu.list{/lang} <span class="badge badgeInverse">{#$items}</span></h2>
 		</header>
 		
 		<table class="table">
 			<thead>
 				<tr>
 					<th class="columnTitle columnUsername{if $sortField == 'username'} active {@$sortOrder}{/if}" colspan="2"><a href="{link controller='OTUList'}pageNo={@$pageNo}&sortField=username&sortOrder={if $sortField == 'username' && $sortOrder == 'ASC'}DESC{else}ASC{/if}{/link}">{lang}wcf.user.username{/lang}</a></th>
-					<th class="columnText columnTime{if $sortField == 'time'} active {@$sortOrder}{/if}"><a href="{link controller='OTUList'}pageNo={@$pageNo}&sortField=time&sortOrder={if $sortField == 'time' && $sortOrder == 'ASC'}DESC{else}ASC{/if}{/link}">{lang}wcf.otu.expires{/lang}</a></th>
+					<th class="columnText columnTime{if $sortField == 'time'} active {@$sortOrder}{/if}"><a href="{link controller='OTUList'}pageNo={@$pageNo}&sortField=time&sortOrder={if $sortField == 'time' && $sortOrder == 'ASC'}DESC{else}ASC{/if}{/link}">{lang}wcf.acp.user.otu.list.expires{/lang}</a></th>
 					
 					{event name='columnHeads'}
 				</tr>

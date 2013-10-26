@@ -2,7 +2,7 @@
 namespace be\bastelstu\max\wcf\otu;
 
 /**
- * Handles installation of One-Time Username.
+ * Handles installation of One-Time-Username.
  *
  * @author 	Maximilian Mader
  * @copyright	2013 Maximilian Mader

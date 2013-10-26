@@ -46,7 +46,7 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
 	}
 	
 	/**
-	 * Removes expired entries from One-Time Username blacklist
+	 * Removes expired entries from One-Time-Username blacklist
 	 * 
 	 * @return	integer		Number of deleted usernames
 	 */

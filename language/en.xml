@@ -4,4 +4,14 @@
 		<item name="wcf.acp.option.otu_blacklist_lifetime"><![CDATA[Renaming Grace Period]]></item>
 		<item name="wcf.acp.option.otu_blacklist_lifetime.description"><![CDATA[Period, in which usernames may not be used again. [time in days, -1 for infinite]]]></item>
 	</category>
+	
+	<category name="wcf.acp.user">
+		<item name="wcf.acp.user.otu.delete.sure"><![CDATA[Do you really want to remove “{$entry->username}” from the blacklist?]]></item>
+		<item name="wcf.acp.user.otu.list"><![CDATA[One-Time-Username-Overview]]></item>
+		<item name="wcf.acp.user.otu.list.expires"><![CDATA[Time of expiration]]></item>
+	</category>
+	
+	<category name="wcf.acp.menu">
+		<item name="wcf.acp.menu.link.user.management.otu"><![CDATA[One-Time-Username-Overview]]></item>
+	</category>
 </language>

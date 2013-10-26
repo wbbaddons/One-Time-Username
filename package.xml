@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package name="be.bastelstu.max.wcf.otu" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/package.xsd">
 	<packageinformation>
-		<packagename><![CDATA[One-Time Username]]></packagename>
+		<packagename><![CDATA[One-Time-Username]]></packagename>
 		<packagedescription><![CDATA[Prohibits the use of usernames that have been used before.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Verbietet die Verwendung von Benutzernamen, welche bereits verwendet wurden.]]></packagedescription>
 		<isapplication>0</isapplication>
@@ -25,6 +25,7 @@
 		<instruction type="acpTemplate">acptemplate.tar</instruction>
 		<instruction type="eventListener">eventListener.xml</instruction>
 		<instruction type="option">option.xml</instruction>
+		<instruction type="acpMenu">acpMenu.xml</instruction>
 		<instruction type="language">language/*.xml</instruction>
 		<instruction type="script" run="standalone">acp/be.bastelstu.max.wcf.otu.install.php</instruction>
 	</instructions>
@@ -34,5 +35,6 @@
 		<instruction type="sql">update_b1.sql</instruction>
 		<instruction type="file">file.tar</instruction>
 		<instruction type="acpTemplate">acptemplate.tar</instruction>
+		<instruction type="acpMenu">acpMenu.xml</instruction>
 	</instructions>
 </package>

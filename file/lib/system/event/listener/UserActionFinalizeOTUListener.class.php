@@ -2,7 +2,7 @@
 namespace wcf\system\event\listener;
 
 /**
- * Adds usernames to One-Time Username blacklist.
+ * Adds usernames to One-Time-Username blacklist.
  *
  * @author 	Maximilian Mader
  * @copyright	2013 Maximilian Mader
@@ -20,13 +20,13 @@ class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener 
 			$parameters = $eventObj->getParameters();
 			
 			if ($action == 'update' && isset($parameters['data']) && isset($parameters['data']['oldUsername'])) {
-				// User has changed their username, therefore add the old username to One-Time Username blacklist.
+				// User has changed their username, therefore add the old username to One-Time-Username blacklist.
 				$blacklistEntryAction = new \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction(array(), 'create', array('data' => array('username' => $parameters['data']['oldUsername'], 'time' => TIME_NOW)));
 				$blacklistEntryAction->executeAction();
 			}
 			else if (($action == 'update' && isset($parameters['data']) && isset($parameters['data']['username'])) || $action == 'delete') {
 				// Users have been updated or deleted, therefore blacklist their (old) usernames.
-				// If updated, only add the usernames to the One-Time Username blacklist
+				// If updated, only add the usernames to the One-Time-Username blacklist
 				// if username has been changed (username parameter is set).
 				$usernames = array();
 				foreach ($eventObj->getObjects() as $object) {

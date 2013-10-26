@@ -4,4 +4,14 @@
 		<item name="wcf.acp.option.otu_blacklist_lifetime"><![CDATA[Umbenennungs-Sperrfrist]]></item>
 		<item name="wcf.acp.option.otu_blacklist_lifetime.description"><![CDATA[Zeit, in der ein bereits zuvor verwendeter Benutzername nicht erneut verwendet werden kann. [Zeit in Tagen, -1 für unendlich]]]></item>
 	</category>
+	
+	<category name="wcf.acp.user">
+		<item name="wcf.acp.user.otu.delete.sure"><![CDATA[Wollen Sie den Benutzernamen „{$entry->username}“ wirklich freigeben?]]></item>
+		<item name="wcf.acp.user.otu.list"><![CDATA[One-Time-Username-Übersicht]]></item>
+		<item name="wcf.acp.user.otu.list.expires"><![CDATA[Ablaufzeitpunkt]]></item>
+	</category>
+	
+	<category name="wcf.acp.menu">
+		<item name="wcf.acp.menu.link.user.management.otu"><![CDATA[One-Time-Username-Übersicht]]></item>
+	</category>
 </language>

@@ -47,7 +47,7 @@ class UserOtuBlacklistEntryEditor extends \wcf\data\DatabaseObjectEditor impleme
 			$otUsernames .= $username . "\n";
 		}
 		
-		// add One-Time Usernames to blacklist
+		// add One-Time-Usernames to blacklist
 		if ($otUsernames !== '') {
 			// leading comma, because it isn't a valid username
 			$blacklist .= "\n,One-Time-Username-Start-DO-NOT-REMOVE\n";
