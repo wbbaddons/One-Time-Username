@@ -25,4 +25,23 @@ class UserOtuBlacklistEntry extends \wcf\data\DatabaseObject {
 	 * @see \wcf\data\DatabaseObject::$databaseTableIndexIsIdentity
 	 */
 	protected static $databaseTableIndexIsIdentity = false;
+	
+	/**
+	 * Removes contents between OTU start and end marks (e.g. ",One-Time-Username-Start-DO-NOT-REMOVE").
+	 *
+	 * @return string Text without contents between OTU marks
+	 */
+	public static function replaceOTUTextList($text, $replacement = '\\1') {
+		static $regex = null;
+		
+		if ($regex === null) {
+			$regex = new \wcf\system\Regex('(?:^|\n),One-Time-Username-Start-DO-NOT-REMOVE\n.*\n,One-Time-Username-End-DO-NOT-REMOVE(\n|$)', \wcf\system\Regex::DOT_ALL);
+		}
+		
+		$text = $regex->replace($text, $replacement);
+		
+		// list was broken, delete leftover start or end marks
+		// everything on the list will be treated as blacklisted by hand!
+		return str_replace(array(',One-Time-Username-Start-DO-NOT-REMOVE', ',One-Time-Username-End-DO-NOT-REMOVE'), '', $text);
+	}
 }

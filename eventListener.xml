@@ -25,5 +25,17 @@
 			<listenerclassname>wcf\system\event\listener\DailyCleanUpCronjobExecuteOTUCleanUpListener</listenerclassname>
 			<environment>admin</environment>
 		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\system\option\OptionHandler</eventclassname>
+			<eventname>afterReadCache</eventname>
+			<listenerclassname>wcf\system\event\listener\OptionEditOTUListener</listenerclassname>
+			<environment>admin</environment>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\acp\form\OptionForm</eventclassname>
+			<eventname>saved</eventname>
+			<listenerclassname>wcf\system\event\listener\OptionEditOTUListener</listenerclassname>
+			<environment>admin</environment>
+		</eventlistener>
 	</import>
 </data>

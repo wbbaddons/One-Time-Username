@@ -24,11 +24,7 @@ class UserOtuBlacklistEntryEditor extends \wcf\data\DatabaseObjectEditor impleme
 		$options = \wcf\data\option\Option::getOptions();
 		
 		// delete One-Time-Usernames from WCF username blacklist
-		$blacklist = \wcf\system\Regex::compile('(?:^|\n),One-Time-Username-Start-DO-NOT-REMOVE\n.*\n,One-Time-Username-End-DO-NOT-REMOVE(\n|$)', \wcf\system\Regex::DOT_ALL)->replace($options['REGISTER_FORBIDDEN_USERNAMES']->optionValue, '\\1');
-		
-		// list was broken, delete leftover start or end marks
-		// everything on the list will be treated as blacklisted by hand!
-		$blacklist = str_replace(array(',One-Time-Username-Start-DO-NOT-REMOVE', ',One-Time-Username-End-DO-NOT-REMOVE'), '', $blacklist);
+		$blacklist = \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntry::replaceOTUTextList($options['REGISTER_FORBIDDEN_USERNAMES']->optionValue);
 		
 		// read One-Time-Username blacklist from database
 		$condition = new \wcf\system\database\util\PreparedStatementConditionBuilder();
