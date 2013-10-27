@@ -16,7 +16,7 @@ class OTUListPage extends SortablePage {
 	/**
 	 * @see	\wcf\page\AbstractPage::$activeMenuItem
 	 */
-	public $activeMenuItem = 'wcf.acp.menu.link.otu.list';
+	public $activeMenuItem = 'wcf.acp.menu.link.user.management.otu';
 	
 	/**
 	 * @see	\wcf\page\SortablePage::$defaultSortField
