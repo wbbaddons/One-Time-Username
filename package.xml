@@ -5,8 +5,8 @@
 		<packagedescription><![CDATA[Prohibits the use of usernames that have been used before.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[Verbietet die Verwendung von Benutzernamen, welche bereits verwendet wurden.]]></packagedescription>
 		<isapplication>0</isapplication>
-		<version>1.0.0 Beta 1</version>
-		<date>2013-10-18</date>
+		<version>1.0.0 Beta 2</version>
+		<date>2013-10-27</date>
 		<license><![CDATA[BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>]]></license>
 	</packageinformation>
 	
