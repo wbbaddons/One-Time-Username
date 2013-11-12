@@ -46,7 +46,7 @@
 				{foreach from=$objects item=entry}
 					<tr class="jsOTURow">
 						<td class="columnIcon">
-							<span class="icon icon16 icon-remove jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->entryID}" data-confirm-message="{lang}wcf.acp.otu.delete.sure{/lang}"></span>
+							<span class="icon icon16 icon-remove jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->entryID}" data-confirm-message="{lang}wcf.acp.user.otu.delete.sure{/lang}"></span>
 							
 							{event name='rowButtons'}
 						</td>
