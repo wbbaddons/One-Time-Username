@@ -5,7 +5,7 @@
 		<packagedescription><![CDATA[One-Time-Username is the simple solution to prevent confusion in your community, since it blocks the use of previously used usernames, after they become available for others, e.g. due to deletion or after renaming of users.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[One-Time-Username ist die einfache Lösung, um Verwirrung in Ihrer Community zu verhindern, indem verwendete Benutzernamen, nach der Freigabe durch Umbenennung oder Löschung, automatisch gesperrt und nach einer einstellbaren Zeit entsperrt werden.]]></packagedescription>
 		<isapplication>0</isapplication>
-		<version>1.0.0 Beta 2</version>
+		<version>1.0.0 RC 1</version>
 		<date>2013-10-27</date>
 		<license><![CDATA[BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>]]></license>
 	</packageinformation>
