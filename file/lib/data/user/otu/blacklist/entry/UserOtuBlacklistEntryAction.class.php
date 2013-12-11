@@ -35,13 +35,25 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
 	public function bulkCreate() {
 		\wcf\system\WCF::getDB()->beginTransaction();
 		// prevent duplicate entries
-		call_user_func(array($this->className, 'deleteAll'), array_map(function($element) {
+		$condition = new \wcf\system\database\util\PreparedStatementConditionBuilder();
+		$condition->add('username IN(?)', array(array_map(function($element) {
 			return $element['username'];
-		}, $this->parameters['data']));
+		}, $this->parameters['data'])));
+		
+		$sql = "SELECT	".call_user_func(array($this->className, 'getDatabaseTableIndexName'))."
+			FROM	".call_user_func(array($this->className, 'getDatabaseTableName'))."
+			".$condition."
+			FOR UPDATE";
+		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
+		$stmt->execute($condition->getParameters());
+		$entryIDs = array();
+		while ($entryID = $stmt->fetchColumn()) $entryIDs[] = $entryID;
+		call_user_func(array($this->className, 'deleteAll'), $entryIDs);
 		
 		foreach ($this->parameters['data'] as $entry) {
 			call_user_func(array($this->className, 'create'), $entry);
 		}
+		
 		\wcf\system\WCF::getDB()->commitTransaction();
 	}
 	
@@ -58,10 +70,9 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
 			WHERE	time < ?";
 		$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
 		$stmt->execute(array(TIME_NOW - OTU_BLACKLIST_LIFETIME * 86400));
-		$usernames = array();
+		$entryIDs = array();
+		while ($entryID = $stmt->fetchColumn()) $entryIDs[] = $entryID;
 		
-		while ($username = $stmt->fetchColumn()) $usernames[] = $username;
-		
-		return call_user_func(array($this->className, 'deleteAll'), $usernames);
+		return call_user_func(array($this->className, 'deleteAll'), $entryIDs);
 	}
 }
