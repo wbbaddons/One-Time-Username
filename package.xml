@@ -37,4 +37,9 @@
 		<instruction type="acpTemplate">acptemplate.tar</instruction>
 		<instruction type="acpMenu">acpMenu.xml</instruction>
 	</instructions>
+	
+	<instructions type="update" fromversion="1.0.0 Beta 2">
+		<instruction type="file">file.tar</instruction>
+		<instruction type="acpTemplate">acptemplate.tar</instruction>
+	</instructions>
 </package>
