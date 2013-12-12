@@ -33,6 +33,8 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
 	 * Adds the given usernames to the OTU-blacklist
 	 */
 	public function bulkCreate() {
+		if (empty($this->parameters['data'])) return;
+		
 		\wcf\system\WCF::getDB()->beginTransaction();
 		// prevent duplicate entries
 		$condition = new \wcf\system\database\util\PreparedStatementConditionBuilder();
