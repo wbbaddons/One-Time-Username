@@ -23,7 +23,7 @@ $stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
 $stmt->execute(array(''));
 $entries = array();
 while ($row = $stmt->fetchArray()) {
-	$entries[] = array('username' => $row['oldUsername'], 'time' => $row['lastUsernameChange'], 'userID' => $userID);
+	$entries[] = array('username' => $row['oldUsername'], 'time' => $row['lastUsernameChange'], 'userID' => $row['userID']);
 }
 
 // blacklist the usernames that have been used before
