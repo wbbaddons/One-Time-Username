@@ -26,7 +26,12 @@ class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener 
 				$entries = array();
 				foreach ($eventObj->getObjects() as $object) {
 					if ($object instanceof \wcf\data\user\UserEditor) {
-						if ($action == 'update' && $parameters['data']['username'] == $object->username) continue;
+						// Skip if username has not been updated
+						//
+						// Also skip if username contains an asterisk (this is a wildcard!)
+						// see https://github.com/WoltLab/WCF/issues/1704
+						if ($action == 'update' && $parameters['data']['username'] == $object->username || mb_strpos($object->username, '*') !== false) continue;
+						
 						$entries[] = array('username' => $object->username, 'time' => TIME_NOW, 'userID' => ($action != 'delete') ? $object->userID : null);
 					}
 				}
