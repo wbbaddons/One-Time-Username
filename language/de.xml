@@ -7,12 +7,12 @@
 	
 	<category name="wcf.acp.user">
 		<item name="wcf.acp.user.otu.delete.sure"><![CDATA[Wollen Sie den Benutzernamen „{$entry->username}“ wirklich freigeben?]]></item>
-		<item name="wcf.acp.user.otu.list"><![CDATA[One-Time-Username-Übersicht]]></item>
+		<item name="wcf.acp.user.otu.list"><![CDATA[One-Time-Username]]></item>
 		<item name="wcf.acp.user.otu.list.expires"><![CDATA[Ablaufzeitpunkt]]></item>
 		<item name="wcf.acp.user.otu.list.lastOwner"><![CDATA[Zuletzt verwendet von]]></item>
 	</category>
 	
 	<category name="wcf.acp.menu">
-		<item name="wcf.acp.menu.link.user.management.otu"><![CDATA[One-Time-Username-Übersicht]]></item>
+		<item name="wcf.acp.menu.link.user.management.otu"><![CDATA[One-Time-Username]]></item>
 	</category>
 </language>

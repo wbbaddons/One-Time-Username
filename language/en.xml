@@ -7,12 +7,12 @@
 	
 	<category name="wcf.acp.user">
 		<item name="wcf.acp.user.otu.delete.sure"><![CDATA[Do you really want to remove “{$entry->username}” from the blacklist?]]></item>
-		<item name="wcf.acp.user.otu.list"><![CDATA[One-Time-Username-Overview]]></item>
+		<item name="wcf.acp.user.otu.list"><![CDATA[One-Time-Username]]></item>
 		<item name="wcf.acp.user.otu.list.expires"><![CDATA[Time of expiration]]></item>
-		<item name="wcf.acp.user.otu.list.lastOwner"><![CDATA[Last time used by]]></item>
+		<item name="wcf.acp.user.otu.list.lastOwner"><![CDATA[Last used by]]></item>
 	</category>
 	
 	<category name="wcf.acp.menu">
-		<item name="wcf.acp.menu.link.user.management.otu"><![CDATA[One-Time-Username-Overview]]></item>
+		<item name="wcf.acp.menu.link.user.management.otu"><![CDATA[One-Time-Username]]></item>
 	</category>
 </language>
