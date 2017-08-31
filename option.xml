@@ -8,6 +8,7 @@
 				<defaultvalue>182</defaultvalue>
 				<minvalue>-1</minvalue>
 				<showorder>1</showorder>
+				<suffix>days</suffix>
 			</option>
 		</options>
 	</import>

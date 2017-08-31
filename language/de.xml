@@ -2,7 +2,7 @@
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/language.xsd" languagecode="de">
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.otu_blacklist_lifetime"><![CDATA[Umbenennungs-Sperrfrist]]></item>
-		<item name="wcf.acp.option.otu_blacklist_lifetime.description"><![CDATA[Zeit, in der ein bereits zuvor verwendeter Benutzername nicht erneut verwendet werden kann. [Zeit in Tagen, -1 für unendlich]]]></item>
+		<item name="wcf.acp.option.otu_blacklist_lifetime.description"><![CDATA[Zeit, in der ein bereits zuvor verwendeter Benutzername nicht erneut verwendet werden kann. [-1 für unendlich]]]></item>
 	</category>
 	
 	<category name="wcf.acp.user">

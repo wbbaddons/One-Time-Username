@@ -2,7 +2,7 @@
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/language.xsd" languagecode="en">
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.otu_blacklist_lifetime"><![CDATA[Renaming Grace Period]]></item>
-		<item name="wcf.acp.option.otu_blacklist_lifetime.description"><![CDATA[Period, in which usernames may not be used again. [time in days, -1 for infinite]]]></item>
+		<item name="wcf.acp.option.otu_blacklist_lifetime.description"><![CDATA[Period, in which usernames may not be used again. [-1 for infinite]]]></item>
 	</category>
 	
 	<category name="wcf.acp.user">
