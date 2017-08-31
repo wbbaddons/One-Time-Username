@@ -12,21 +12,21 @@ namespace wcf\data\user\otu\blacklist\entry;
  */
 class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction {
 	/**
-	 * @see	\wcf\data\AbstractDatabaseObjectAction::$className
+	 * @inheritDoc
 	 */
-	protected $className = '\wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor';
+	protected $className = \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor::class;
 	
 	/**
-	 * @see	\wcf\data\AbstractDatabaseObjectAction::$permissionsDelete
+	 * @inheritDoc
 	 */
-	protected $permissionsDelete = array('admin.system.canEditOption');
+	protected $permissionsDelete = [ 'admin.configuration.canEditOption' ];
 	
 	
 	/**
 	 * Resets cache if any of the listed actions is invoked
-	 * @var	array<string>
+	 * @var	string[]
 	 */
-	protected $resetCache = array('create', 'delete', 'toggle', 'update', 'updatePosition', 'prune', 'bulkCreate');
+	protected $resetCache = [ 'create', 'delete', 'toggle', 'update', 'updatePosition', 'prune', 'bulkCreate' ];
 	
 	
 	/**
@@ -61,7 +61,7 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
 	
 	/**
 	 * Removes expired entries from One-Time-Username blacklist
-	 * 
+	 *
 	 * @return	integer		Number of deleted usernames
 	 */
 	public function prune() {
