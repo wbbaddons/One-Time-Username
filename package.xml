@@ -21,20 +21,12 @@
 	
 	<instructions type="install">
 		<instruction type="sql">install.sql</instruction>
-		<instruction type="file">file.tar</instruction>
-		<instruction type="acpTemplate">acptemplate.tar</instruction>
+		<instruction type="file">files.tar</instruction>
+		<instruction type="acpTemplate">acptemplates.tar</instruction>
 		<instruction type="eventListener">eventListener.xml</instruction>
 		<instruction type="option">option.xml</instruction>
 		<instruction type="acpMenu">acpMenu.xml</instruction>
 		<instruction type="language">language/*.xml</instruction>
 		<instruction type="script" run="standalone">acp/be.bastelstu.max.wcf.otu.install.php</instruction>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.0.0 RC *">
-		<instruction type="file">file.tar</instruction>
-	</instructions>
-	
-	<instructions type="update" fromversion="1.0.0 RC 3">
-		<instruction type="file">file.tar</instruction>
 	</instructions>
 </package>
