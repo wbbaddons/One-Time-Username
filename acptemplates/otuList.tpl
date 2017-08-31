@@ -1,37 +1,26 @@
 {include file='header' pageTitle='wcf.acp.user.otu.list'}
 
-<header class="boxHeadline">
-	<h1>{lang}wcf.acp.user.otu.list{/lang}</h1>
+<script data-relocate="true">
+	$(function() {
+		new WCF.Action.Delete('wcf\\data\\user\\otu\\blacklist\\entry\\UserOtuBlacklistEntryAction', '.jsOTURow');
+	});
+</script>
+
+<header class="contentHeader">
+	<div class="contentHeaderTitle">
+		<h1 class="contentTitle">{lang}wcf.acp.user.otu.list{/lang}</h1>
+	</div>
 	
-	<script data-relocate="true">
-		//<![CDATA[
-		$(function() {
-			new WCF.Action.Delete('wcf\\data\\user\\otu\\blacklist\\entry\\UserOtuBlacklistEntryAction', '.jsOTURow');
-		});
-		//]]>
-	</script>
 </header>
 
-<div class="contentNavigation">
-	{pages print=true assign=pagesLinks controller="OTUList" link="pageNo=%d&sortField=$sortField&sortOrder=$sortOrder"}
-	
-	{hascontent}
-		<nav>
-			<ul>
-				{content}
-					{event name='contentNavigationButtonsTop'}
-				{/content}
-			</ul>
-		</nav>
-	{/hascontent}
-</div>
+{hascontent}
+	<div class="paginationTop">
+		{content}{pages print=true assign=pagesLinks controller="OtuList" link="pageNo=%d&sortField=$sortField&sortOrder=$sortOrder"}{/content}
+	</div>
+{/hascontent}
 
 {if $objects|count}
-	<div class="tabularBox tabularBoxTitle marginTop">
-		<header>
-			<h2>{lang}wcf.acp.user.otu.list{/lang} <span class="badge badgeInverse">{#$items}</span></h2>
-		</header>
-		
+	<div id="otuTableContainer" class="section tabularBox">
 		<table class="table">
 			<thead>
 				<tr>
@@ -46,7 +35,7 @@
 				{foreach from=$objects item=entry}
 					<tr class="jsOTURow">
 						<td class="columnIcon">
-							<span class="icon icon16 icon-remove jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->entryID}" data-confirm-message="{lang}wcf.acp.user.otu.delete.sure{/lang}"></span>
+							<span class="icon icon16 fa-times jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->entryID}" data-confirm-message="{lang}wcf.acp.user.otu.delete.sure{/lang}"></span>
 							
 							{event name='rowButtons'}
 						</td>
@@ -62,14 +51,18 @@
 		
 	</div>
 	
-	<div class="contentNavigation">
-		{@$pagesLinks}
+	<footer class="contentFooter">
+		{hascontent}
+			<div class="paginationBottom">
+				{content}{@$pagesLinks}{/content}
+			</div>
+		{/hascontent}
 		
 		{hascontent}
-			<nav>
+			<nav class="contentFooterNavigation">
 				<ul>
 					{content}
-						{event name='contentNavigationButtonsBottom'}
+						{event name='contentFooterNavigation'}
 					{/content}
 				</ul>
 			</nav>
