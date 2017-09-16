@@ -38,4 +38,43 @@
 			<environment>admin</environment>
 		</eventlistener>
 	</import>
+
+	<delete>
+		<eventlistener>
+			<eventclassname>wcf\data\user\UserAction</eventclassname>
+			<eventname>finalizeAction</eventname>
+			<listenerclassname>wcf\system\event\listener\UserActionFinalizeOTUListener</listenerclassname>
+			<environment>user</environment>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\data\user\UserAction</eventclassname>
+			<eventname>finalizeAction</eventname>
+			<listenerclassname>wcf\system\event\listener\UserActionFinalizeOTUListener</listenerclassname>
+			<environment>admin</environment>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\system\cronjob\DailyCleanUpCronjob</eventclassname>
+			<eventname>execute</eventname>
+			<listenerclassname>wcf\system\event\listener\DailyCleanUpCronjobExecuteOTUCleanUpListener</listenerclassname>
+			<environment>user</environment>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\system\cronjob\DailyCleanUpCronjob</eventclassname>
+			<eventname>execute</eventname>
+			<listenerclassname>wcf\system\event\listener\DailyCleanUpCronjobExecuteOTUCleanUpListener</listenerclassname>
+			<environment>admin</environment>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\system\option\OptionHandler</eventclassname>
+			<eventname>afterReadCache</eventname>
+			<listenerclassname>wcf\system\event\listener\OptionEditOTUListener</listenerclassname>
+			<environment>admin</environment>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>wcf\acp\form\OptionForm</eventclassname>
+			<eventname>saved</eventname>
+			<listenerclassname>wcf\system\event\listener\OptionEditOTUListener</listenerclassname>
+			<environment>admin</environment>
+		</eventlistener>
+	</delete>
 </data>
