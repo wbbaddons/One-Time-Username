@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/eventListener.xsd">
 	<import>
-		<eventlistener>
+		<eventlistener name="userActionUser">
 			<eventclassname>wcf\data\user\UserAction</eventclassname>
 			<eventname>finalizeAction</eventname>
 			<listenerclassname>wcf\system\event\listener\UserActionFinalizeOTUListener</listenerclassname>
 			<environment>user</environment>
 		</eventlistener>
-		<eventlistener>
+		<eventlistener name="userActionAdmin">
 			<eventclassname>wcf\data\user\UserAction</eventclassname>
 			<eventname>finalizeAction</eventname>
 			<listenerclassname>wcf\system\event\listener\UserActionFinalizeOTUListener</listenerclassname>
 			<environment>admin</environment>
 		</eventlistener>
-		<eventlistener>
+		<eventlistener name="cronjobUser">
 			<eventclassname>wcf\system\cronjob\DailyCleanUpCronjob</eventclassname>
 			<eventname>execute</eventname>
 			<listenerclassname>wcf\system\event\listener\DailyCleanUpCronjobExecuteOTUCleanUpListener</listenerclassname>
 			<environment>user</environment>
 		</eventlistener>
-		<eventlistener>
+		<eventlistener name="cronjobAdmin">
 			<eventclassname>wcf\system\cronjob\DailyCleanUpCronjob</eventclassname>
 			<eventname>execute</eventname>
 			<listenerclassname>wcf\system\event\listener\DailyCleanUpCronjobExecuteOTUCleanUpListener</listenerclassname>
 			<environment>admin</environment>
 		</eventlistener>
-		<eventlistener>
+		<eventlistener name="fakeOption">
 			<eventclassname>wcf\system\option\OptionHandler</eventclassname>
 			<eventname>afterReadCache</eventname>
 			<listenerclassname>wcf\system\event\listener\OptionEditOTUListener</listenerclassname>
 			<environment>admin</environment>
 		</eventlistener>
-		<eventlistener>
+		<eventlistener name="fakeOptionSave">
 			<eventclassname>wcf\acp\form\OptionForm</eventclassname>
 			<eventname>saved</eventname>
 			<listenerclassname>wcf\system\event\listener\OptionEditOTUListener</listenerclassname>
