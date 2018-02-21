@@ -48,7 +48,6 @@
 				{/foreach}
 			</tbody>
 		</table>
-		
 	</div>
 	
 	<footer class="contentFooter">
@@ -67,7 +66,7 @@
 				</ul>
 			</nav>
 		{/hascontent}
-	</div>
+	</footer>
 {else}
 	<p class="info">{lang}wcf.global.noItems{/lang}</p>
 {/if}
