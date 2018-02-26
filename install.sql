@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS wcf1_user_otu_blacklist_entry;
 CREATE TABLE wcf1_user_otu_blacklist_entry (
 	entryID		INT(10)		NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	username	VARCHAR(255)	NOT NULL,
+	username	VARCHAR(100)	NOT NULL,
 	time		INT(10)		NOT NULL,
 	userID		INT(10)		DEFAULT NULL,
 	
