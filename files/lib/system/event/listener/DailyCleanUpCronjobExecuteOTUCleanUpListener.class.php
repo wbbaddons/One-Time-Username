@@ -13,7 +13,7 @@ use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  system.event.listener
  */
-class DailyCleanUpCronjobExecuteOTUCleanUpListener implements \wcf\system\event\IEventListener
+final class DailyCleanUpCronjobExecuteOTUCleanUpListener implements \wcf\system\event\IEventListener
 {
     /**
      * @see \wcf\system\event\IEventListener::execute()

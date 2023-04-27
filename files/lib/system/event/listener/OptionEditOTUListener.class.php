@@ -16,7 +16,7 @@ use wcf\system\option\OptionHandler;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  system.event.listener
  */
-class OptionEditOTUListener implements \wcf\system\event\IEventListener
+final class OptionEditOTUListener implements \wcf\system\event\IEventListener
 {
     /**
      * @see \wcf\system\event\IEventListener::execute()

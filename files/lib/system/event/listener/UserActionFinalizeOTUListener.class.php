@@ -15,7 +15,7 @@ use wcf\data\user\UserEditor;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  system.event.listener
  */
-class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener
+final class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener
 {
     /**
      * @see \wcf\system\event\IEventListener::execute()
