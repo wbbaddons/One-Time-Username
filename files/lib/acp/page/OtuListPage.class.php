@@ -2,6 +2,7 @@
 
 namespace wcf\acp\page;
 
+use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryList;
 use wcf\page\SortablePage;
 
 /**
@@ -34,7 +35,7 @@ class OtuListPage extends SortablePage
     /**
      * @inheritDoc
      */
-    public $objectListClassName = \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryList::class;
+    public $objectListClassName = UserOtuBlacklistEntryList::class;
 
     /**
      * @inheritDoc

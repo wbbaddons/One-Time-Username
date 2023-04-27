@@ -13,6 +13,9 @@
 
 namespace be\bastelstu\max\wcf\otu;
 
+use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor;
+use wcf\system\WCF;
+
 // little workaround, options have already been loaded and the constant won't be defined
 if (!\defined('OTU_BLACKLIST_LIFETIME')) {
     \define('OTU_BLACKLIST_LIFETIME', 182);
@@ -25,7 +28,7 @@ $sql = "SELECT      userID,
         FROM        wcf1_user
         WHERE       oldUsername <> ?
         ORDER BY    oldUsername ASC";
-$stmt = \wcf\system\WCF::getDB()->prepare($sql);
+$stmt = WCF::getDB()->prepare($sql);
 $stmt->execute(['']);
 $entries = [];
 while ($row = $stmt->fetchArray()) {
@@ -33,15 +36,15 @@ while ($row = $stmt->fetchArray()) {
 }
 
 // blacklist the usernames that have been used before
-\wcf\system\WCF::getDB()->beginTransaction();
+WCF::getDB()->beginTransaction();
 $sql = "INSERT INTO wcf1_user_otu_blacklist_entry
                     (username, time, userID)
         VALUES      (?, ?, ?)";
-$stmt = \wcf\system\WCF::getDB()->prepare($sql);
+$stmt = WCF::getDB()->prepare($sql);
 foreach ($entries as $entry) {
     $stmt->execute([$entry['username'], ($entry['time'] > 0) ? $entry['time'] : TIME_NOW, $entry['userID']]);
 }
-\wcf\system\WCF::getDB()->commitTransaction();
+WCF::getDB()->commitTransaction();
 
 // rebuild the corresponding option
-\wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor::resetCache();
+UserOtuBlacklistEntryEditor::resetCache();

@@ -2,6 +2,8 @@
 
 namespace wcf\system\event\listener;
 
+use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction;
+
 /**
  * Vaporizes unneeded data.
  *
@@ -18,7 +20,7 @@ class DailyCleanUpCronjobExecuteOTUCleanUpListener implements \wcf\system\event\
      */
     public function execute($eventObj, $className, $eventName)
     {
-        $blacklistEntryAction = new \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction([], 'prune');
+        $blacklistEntryAction = new UserOtuBlacklistEntryAction([], 'prune');
         $blacklistEntryAction->executeAction();
     }
 }

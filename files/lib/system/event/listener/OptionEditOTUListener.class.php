@@ -2,6 +2,11 @@
 
 namespace wcf\system\event\listener;
 
+use wcf\acp\form\OptionForm;
+use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntry;
+use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor;
+use wcf\system\option\OptionHandler;
+
 /**
  * Hides the OTU-blacklist in option "register_forbidden_usernames".
  *
@@ -18,10 +23,10 @@ class OptionEditOTUListener implements \wcf\system\event\IEventListener
      */
     public function execute($eventObj, $className, $eventName)
     {
-        if ($className == 'wcf\system\option\OptionHandler' && $eventName == 'afterReadCache' && isset($eventObj->cachedOptions['register_forbidden_usernames'])) {
-            $eventObj->cachedOptions['register_forbidden_usernames']->optionValue = \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntry::replaceOTUTextList($eventObj->cachedOptions['register_forbidden_usernames']->optionValue);
-        } elseif ($className == 'wcf\acp\form\OptionForm' && $eventName == 'saved') {
-            \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor::resetCache();
+        if ($className == OptionHandler::class && $eventName == 'afterReadCache' && isset($eventObj->cachedOptions['register_forbidden_usernames'])) {
+            $eventObj->cachedOptions['register_forbidden_usernames']->optionValue = UserOtuBlacklistEntry::replaceOTUTextList($eventObj->cachedOptions['register_forbidden_usernames']->optionValue);
+        } elseif ($className == OptionForm::class && $eventName == 'saved') {
+            UserOtuBlacklistEntryEditor::resetCache();
         }
     }
 }

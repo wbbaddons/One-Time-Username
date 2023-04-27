@@ -2,6 +2,9 @@
 
 namespace wcf\data\user\otu\blacklist\entry;
 
+use wcf\data\DatabaseObject;
+use wcf\system\Regex;
+
 /**
  * Represents an user OTU blacklist entry.
  *
@@ -11,7 +14,7 @@ namespace wcf\data\user\otu\blacklist\entry;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  data.user.otu.blacklist.entry
  */
-class UserOtuBlacklistEntry extends \wcf\data\DatabaseObject
+class UserOtuBlacklistEntry extends DatabaseObject
 {
     /**
      * @see \wcf\data\DatabaseObject::$databaseTableName
@@ -33,7 +36,7 @@ class UserOtuBlacklistEntry extends \wcf\data\DatabaseObject
         static $regex = null;
 
         if ($regex === null) {
-            $regex = new \wcf\system\Regex('(?:^|\n),One-Time-Username-Start-DO-NOT-REMOVE\n.*\n,One-Time-Username-End-DO-NOT-REMOVE(\n|$)', \wcf\system\Regex::DOT_ALL);
+            $regex = new Regex('(?:^|\n),One-Time-Username-Start-DO-NOT-REMOVE\n.*\n,One-Time-Username-End-DO-NOT-REMOVE(\n|$)', Regex::DOT_ALL);
         }
 
         $text = $regex->replace($text, $replacement);

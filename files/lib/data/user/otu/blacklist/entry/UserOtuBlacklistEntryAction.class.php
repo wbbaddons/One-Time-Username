@@ -2,6 +2,10 @@
 
 namespace wcf\data\user\otu\blacklist\entry;
 
+use wcf\data\AbstractDatabaseObjectAction;
+use wcf\system\database\util\PreparedStatementConditionBuilder;
+use wcf\system\WCF;
+
 /**
  * Executes OTU-blacklist-related actions.
  *
@@ -11,12 +15,12 @@ namespace wcf\data\user\otu\blacklist\entry;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  data.user.otu.blacklist.entry
  */
-class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
+class UserOtuBlacklistEntryAction extends AbstractDatabaseObjectAction
 {
     /**
      * @inheritDoc
      */
-    protected $className = \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor::class;
+    protected $className = UserOtuBlacklistEntryEditor::class;
 
     /**
      * @inheritDoc
@@ -38,9 +42,9 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
             return;
         }
 
-        \wcf\system\WCF::getDB()->beginTransaction();
+        WCF::getDB()->beginTransaction();
         // prevent duplicate entries
-        $condition = new \wcf\system\database\util\PreparedStatementConditionBuilder();
+        $condition = new PreparedStatementConditionBuilder();
         $condition->add('username IN(?)', [\array_map(static function ($element) {
             return $element['username'];
         }, $this->parameters['data'])]);
@@ -49,7 +53,7 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
                 FROM	" . \call_user_func([$this->className, 'getDatabaseTableName']) . "
                 {$condition}
                 FOR UPDATE";
-        $stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
+        $stmt = WCF::getDB()->prepareStatement($sql);
         $stmt->execute($condition->getParameters());
         $entryIDs = [];
         while ($entryID = $stmt->fetchColumn()) {
@@ -61,7 +65,7 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
             \call_user_func([$this->className, 'create'], $entry);
         }
 
-        \wcf\system\WCF::getDB()->commitTransaction();
+        WCF::getDB()->commitTransaction();
     }
 
     /**

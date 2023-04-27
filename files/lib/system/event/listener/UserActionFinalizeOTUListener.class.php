@@ -2,6 +2,10 @@
 
 namespace wcf\system\event\listener;
 
+use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction;
+use wcf\data\user\UserAction;
+use wcf\data\user\UserEditor;
+
 /**
  * Adds usernames to One-Time-Username blacklist.
  *
@@ -18,7 +22,7 @@ class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener
      */
     public function execute($eventObj, $className, $eventName)
     {
-        if ($className == 'wcf\data\user\UserAction' && $eventName == 'finalizeAction') {
+        if ($className == UserAction::class && $eventName == 'finalizeAction') {
             $action = $eventObj->getActionName();
             $parameters = $eventObj->getParameters();
 
@@ -28,7 +32,7 @@ class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener
                 // if username has been changed (username parameter is set).
                 $entries = [];
                 foreach ($eventObj->getObjects() as $object) {
-                    if ($object instanceof \wcf\data\user\UserEditor) {
+                    if ($object instanceof UserEditor) {
                         // Skip if username has not been updated
                         //
                         // Also skip if username contains an asterisk (this is a wildcard!)
@@ -41,7 +45,7 @@ class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener
                     }
                 }
 
-                $blacklistEntryAction = new \wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction([], 'bulkCreate', ['data' => $entries]);
+                $blacklistEntryAction = new UserOtuBlacklistEntryAction([], 'bulkCreate', ['data' => $entries]);
                 $blacklistEntryAction->executeAction();
             }
         }

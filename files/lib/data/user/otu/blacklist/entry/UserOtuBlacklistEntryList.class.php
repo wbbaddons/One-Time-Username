@@ -2,6 +2,8 @@
 
 namespace wcf\data\user\otu\blacklist\entry;
 
+use wcf\data\DatabaseObjectList;
+
 /**
  * Represents a list of user OTU blacklist entries.
  *
@@ -11,12 +13,12 @@ namespace wcf\data\user\otu\blacklist\entry;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  data.user.otu.blacklist.entry
  */
-class UserOtuBlacklistEntryList extends \wcf\data\DatabaseObjectList
+class UserOtuBlacklistEntryList extends DatabaseObjectList
 {
     /**
      * @see \wcf\data\DatabaseObjectList::$className
      */
-    public $className = '\wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntry';
+    public $className = UserOtuBlacklistEntry::class;
 
     /**
      * @see \wcf\data\DatabaseObjectList::$sqlSelects
