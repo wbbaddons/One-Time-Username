@@ -33,8 +33,4 @@
 		<instruction type="language">language/*.xml</instruction>
 		<instruction type="script" run="standalone">acp/be.bastelstu.max.wcf.otu.install.php</instruction>
 	</instructions>
-
-	<instructions type="update" fromversion="1.1.0">
-		<instruction type="sql" run="standalone">update_1.1.1.sql</instruction>
-	</instructions>
 </package>
