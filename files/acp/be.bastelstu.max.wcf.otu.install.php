@@ -10,8 +10,6 @@
  * @license BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>
  */
 
-namespace be\bastelstu\max\wcf\otu;
-
 use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor;
 use wcf\system\WCF;
 
