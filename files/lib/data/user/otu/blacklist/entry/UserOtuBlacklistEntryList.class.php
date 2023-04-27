@@ -14,12 +14,12 @@ use wcf\data\DatabaseObjectList;
 class UserOtuBlacklistEntryList extends DatabaseObjectList
 {
     /**
-     * @see \wcf\data\DatabaseObjectList::$className
+     * @inheritDoc
      */
     public $className = UserOtuBlacklistEntry::class;
 
     /**
-     * @see \wcf\data\DatabaseObjectList::$sqlSelects
+     * @inheritDoc
      */
     public $sqlSelects = "user.username AS lastOwner";
 

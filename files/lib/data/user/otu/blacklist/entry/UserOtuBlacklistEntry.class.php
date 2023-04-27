@@ -15,12 +15,12 @@ use wcf\system\Regex;
 class UserOtuBlacklistEntry extends DatabaseObject
 {
     /**
-     * @see \wcf\data\DatabaseObject::$databaseTableName
+     * @inheritDoc
      */
     protected static $databaseTableName = 'user_otu_blacklist_entry';
 
     /**
-     * @see \wcf\data\DatabaseObject::$databaseTableIndexName
+     * @inheritDoc
      */
     protected static $databaseTableIndexName = 'entryID';
 

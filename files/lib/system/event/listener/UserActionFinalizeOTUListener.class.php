@@ -16,7 +16,7 @@ use wcf\data\user\UserEditor;
 final class UserActionFinalizeOTUListener implements IParameterizedEventListener
 {
     /**
-     * @see \wcf\system\event\IEventListener::execute()
+     * @inheritDoc
      */
     public function execute($eventObj, $className, $eventName, array &$_parameters)
     {

@@ -14,7 +14,7 @@ use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction;
 final class DailyCleanUpCronjobExecuteOTUCleanUpListener implements IParameterizedEventListener
 {
     /**
-     * @see \wcf\system\event\IEventListener::execute()
+     * @inheritDoc
      */
     public function execute($eventObj, $className, $eventName, array &$_parameters)
     {

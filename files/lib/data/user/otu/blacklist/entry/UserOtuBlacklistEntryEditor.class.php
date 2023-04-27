@@ -20,7 +20,7 @@ use wcf\util\StringUtil;
 class UserOtuBlacklistEntryEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {
     /**
-     * @see \wcf\data\DatabaseObjectDecorator::$baseClass
+     * @inheritDoc
      */
     protected static $baseClass = UserOtuBlacklistEntry::class;
 
