@@ -1,16 +1,17 @@
 <?php
 
-namespace be\bastelstu\max\wcf\otu;
+// phpcs:disable PSR1.Files.SideEffects
 
 /**
  * Handles installation of One-Time-Username.
  *
- * @author 	Maximilian Mader
- * @copyright	2013 Maximilian Mader
- * @license	BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>
- * @package	be.bastelstu.max.wcf.otu
+ * @author  Maximilian Mader
+ * @copyright   2013 Maximilian Mader
+ * @license BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>
+ * @package be.bastelstu.max.wcf.otu
  */
-// @codingStandardsIgnoreFile
+
+namespace be\bastelstu\max\wcf\otu;
 
 // little workaround, options have already been loaded and the constant won't be defined
 if (!\defined('OTU_BLACKLIST_LIFETIME')) {
