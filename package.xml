@@ -5,8 +5,8 @@
 		<packagedescription><![CDATA[One-Time-Username is the simple solution to prevent confusion in your community, since it blocks the use of previously used usernames, after they become available for others, e.g. due to deletion or after renaming of users.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[One-Time-Username ist die einfache Lösung, um Verwirrung in Ihrer Community zu verhindern, indem verwendete Benutzernamen, nach der Freigabe durch Umbenennung oder Löschung, automatisch gesperrt und nach einer einstellbaren Zeit entsperrt werden.]]></packagedescription>
 		<isapplication>0</isapplication>
-		<version>1.1.1</version>
-		<date>2018-02-26</date>
+		<version>1.2.0</version>
+		<date>2023-04-27</date>
 		<license><![CDATA[BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>]]></license>
 	</packageinformation>
 	
@@ -32,5 +32,14 @@
 		<instruction type="acpMenu">acpMenu.xml</instruction>
 		<instruction type="language">language/*.xml</instruction>
 		<instruction type="script" run="standalone">acp/be.bastelstu.max.wcf.otu.install.php</instruction>
+	</instructions>
+
+	<instructions type="update" fromversion="1.1.1">
+		<instruction type="file">files.tar</instruction>
+		<instruction type="acpTemplate">acptemplates.tar</instruction>
+		<instruction type="eventListener">eventListener.xml</instruction>
+		<instruction type="option">option.xml</instruction>
+		<instruction type="acpMenu">acpMenu.xml</instruction>
+		<instruction type="language">language/*.xml</instruction>
 	</instructions>
 </package>
