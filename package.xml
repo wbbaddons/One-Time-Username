@@ -16,12 +16,12 @@
 	</authorinformation>
 	
 	<requiredpackages>
-		<requiredpackage minversion="3.0.8">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="5.5.11">com.woltlab.wcf</requiredpackage>
 	</requiredpackages>
 	
-	<compatibility>
-		<api version="2018" />
-	</compatibility>
+	<excludedpackages>
+		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+	</excludedpackages>
 	
 	<instructions type="install">
 		<instruction type="sql">install.sql</instruction>
@@ -36,54 +36,5 @@
 
 	<instructions type="update" fromversion="1.1.0">
 		<instruction type="sql" run="standalone">update_1.1.1.sql</instruction>
-	</instructions>
-
-	<instructions type="update" fromversion="1.1.0 RC 4">
-		<instruction type="sql" run="standalone">update_1.1.1.sql</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-	</instructions>
-
-	<instructions type="update" fromversion="1.1.0 RC 3">
-		<instruction type="sql" run="standalone">update_1.1.1.sql</instruction>
-		<instruction type="file">files.tar</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="eventListener">eventListener.xml</instruction>
-		<instruction type="option">option.xml</instruction>
-		<instruction type="acpMenu">acpMenu.xml</instruction>
-		<instruction type="language">language/*.xml</instruction>
-		<instruction type="script">acp/be.bastelstu.max.wcf.otu.update_1.1.0.php</instruction>
-	</instructions>
-
-	<instructions type="update" fromversion="1.1.0 RC 2">
-		<instruction type="sql" run="standalone">update_1.1.1.sql</instruction>
-		<instruction type="file">files.tar</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="eventListener">eventListener.xml</instruction>
-		<instruction type="option">option.xml</instruction>
-		<instruction type="acpMenu">acpMenu.xml</instruction>
-		<instruction type="language">language/*.xml</instruction>
-		<instruction type="script">acp/be.bastelstu.max.wcf.otu.update_1.1.0.php</instruction>
-	</instructions>
-
-	<instructions type="update" fromversion="1.1.0 RC 1">
-		<instruction type="sql" run="standalone">update_1.1.1.sql</instruction>
-		<instruction type="file">files.tar</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="eventListener">eventListener.xml</instruction>
-		<instruction type="option">option.xml</instruction>
-		<instruction type="acpMenu">acpMenu.xml</instruction>
-		<instruction type="language">language/*.xml</instruction>
-		<instruction type="script">acp/be.bastelstu.max.wcf.otu.update_1.1.0.php</instruction>
-	</instructions>
-
-	<instructions type="update" fromversion="1.0.0">
-		<instruction type="sql" run="standalone">update_1.1.1.sql</instruction>
-		<instruction type="file">files.tar</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="eventListener">eventListener.xml</instruction>
-		<instruction type="option">option.xml</instruction>
-		<instruction type="acpMenu">acpMenu.xml</instruction>
-		<instruction type="language">language/*.xml</instruction>
-		<instruction type="script">acp/be.bastelstu.max.wcf.otu.update_1.1.0.php</instruction>
 	</instructions>
 </package>
