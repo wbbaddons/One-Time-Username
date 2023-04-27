@@ -38,10 +38,10 @@ class UserOtuBlacklistEntryEditor extends \wcf\data\DatabaseObjectEditor impleme
         }
 
         $sql = "SELECT	username
-			FROM	wcf" . WCF_N . "_user_otu_blacklist_entry
-			" . $condition . "
-			ORDER	BY username ASC";
-        $stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
+                FROM	wcf1_user_otu_blacklist_entry
+                {$condition}
+                ORDER	BY username ASC";
+        $stmt = \wcf\system\WCF::getDB()->prepare($sql);
         $stmt->execute($condition->getParameters());
 
         $otUsernames = '';

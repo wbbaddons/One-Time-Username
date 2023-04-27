@@ -46,9 +46,9 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
         }, $this->parameters['data'])]);
 
         $sql = "SELECT	" . \call_user_func([$this->className, 'getDatabaseTableIndexName']) . "
-			FROM	" . \call_user_func([$this->className, 'getDatabaseTableName']) . "
-			" . $condition . "
-			FOR UPDATE";
+                FROM	" . \call_user_func([$this->className, 'getDatabaseTableName']) . "
+                {$condition}
+                FOR UPDATE";
         $stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
         $stmt->execute($condition->getParameters());
         $entryIDs = [];
@@ -75,9 +75,9 @@ class UserOtuBlacklistEntryAction extends \wcf\data\AbstractDatabaseObjectAction
             return 0;
         }
 
-        $sql = "SELECT	" . \call_user_func([$this->className, 'getDatabaseTableIndexName']) . "
-			FROM	" . \call_user_func([$this->className, 'getDatabaseTableName']) . "
-			WHERE	time < ?";
+        $sql = "SELECT  " . \call_user_func([$this->className, 'getDatabaseTableIndexName']) . "
+                FROM    " . \call_user_func([$this->className, 'getDatabaseTableName']) . "
+                WHERE   time < ?";
         $stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
         $stmt->execute([TIME_NOW - OTU_BLACKLIST_LIFETIME * 86400]);
         $entryIDs = [];

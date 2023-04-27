@@ -18,11 +18,13 @@ if (!\defined('OTU_BLACKLIST_LIFETIME')) {
 }
 
 // We don't check for "lastUsernameChange > 0", if this isn't set (how ever this may happen) TIME_NOW will be used.
-$sql = "SELECT	userID, oldUsername, lastUsernameChange
-	FROM	wcf" . WCF_N . "_user
-	WHERE	oldUsername <> ?
-	ORDER	BY oldUsername ASC";
-$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
+$sql = "SELECT      userID,
+                    oldUsername,
+                    lastUsernameChange
+        FROM        wcf1_user
+        WHERE       oldUsername <> ?
+        ORDER BY    oldUsername ASC";
+$stmt = \wcf\system\WCF::getDB()->prepare($sql);
 $stmt->execute(['']);
 $entries = [];
 while ($row = $stmt->fetchArray()) {
@@ -31,10 +33,10 @@ while ($row = $stmt->fetchArray()) {
 
 // blacklist the usernames that have been used before
 \wcf\system\WCF::getDB()->beginTransaction();
-$sql = "INSERT INTO	wcf" . WCF_N . "_user_otu_blacklist_entry
-			(username, time, userID)
-	VALUES		(?, ?, ?)";
-$stmt = \wcf\system\WCF::getDB()->prepareStatement($sql);
+$sql = "INSERT INTO wcf1_user_otu_blacklist_entry
+                    (username, time, userID)
+        VALUES      (?, ?, ?)";
+$stmt = \wcf\system\WCF::getDB()->prepare($sql);
 foreach ($entries as $entry) {
     $stmt->execute([$entry['username'], ($entry['time'] > 0) ? $entry['time'] : TIME_NOW, $entry['userID']]);
 }
