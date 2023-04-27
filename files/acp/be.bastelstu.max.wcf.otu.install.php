@@ -8,7 +8,6 @@
  * @author  Maximilian Mader
  * @copyright   2013 Maximilian Mader
  * @license BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>
- * @package be.bastelstu.max.wcf.otu
  */
 
 namespace be\bastelstu\max\wcf\otu;

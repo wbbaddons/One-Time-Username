@@ -11,8 +11,6 @@ use wcf\system\Regex;
  * @author  Maximilian Mader
  * @copyright   2013 Maximilian Mader
  * @license BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>
- * @package be.bastelstu.max.wcf.otu
- * @subpackage  data.user.otu.blacklist.entry
  */
 class UserOtuBlacklistEntry extends DatabaseObject
 {
