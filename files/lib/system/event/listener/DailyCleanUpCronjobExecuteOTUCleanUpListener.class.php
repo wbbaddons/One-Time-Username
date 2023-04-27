@@ -13,12 +13,12 @@ use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  system.event.listener
  */
-final class DailyCleanUpCronjobExecuteOTUCleanUpListener implements \wcf\system\event\IEventListener
+final class DailyCleanUpCronjobExecuteOTUCleanUpListener implements IParameterizedEventListener
 {
     /**
      * @see \wcf\system\event\IEventListener::execute()
      */
-    public function execute($eventObj, $className, $eventName)
+    public function execute($eventObj, $className, $eventName, array &$_parameters)
     {
         $blacklistEntryAction = new UserOtuBlacklistEntryAction([], 'prune');
         $blacklistEntryAction->executeAction();

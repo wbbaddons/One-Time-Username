@@ -16,12 +16,12 @@ use wcf\system\option\OptionHandler;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  system.event.listener
  */
-final class OptionEditOTUListener implements \wcf\system\event\IEventListener
+final class OptionEditOTUListener implements IParameterizedEventListener
 {
     /**
      * @see \wcf\system\event\IEventListener::execute()
      */
-    public function execute($eventObj, $className, $eventName)
+    public function execute($eventObj, $className, $eventName, array &$_parameters)
     {
         if ($className == OptionHandler::class && $eventName == 'afterReadCache' && isset($eventObj->cachedOptions['register_forbidden_usernames'])) {
             $eventObj->cachedOptions['register_forbidden_usernames']->optionValue = UserOtuBlacklistEntry::replaceOTUTextList($eventObj->cachedOptions['register_forbidden_usernames']->optionValue);

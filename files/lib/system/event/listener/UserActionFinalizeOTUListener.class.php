@@ -15,12 +15,12 @@ use wcf\data\user\UserEditor;
  * @package be.bastelstu.max.wcf.otu
  * @subpackage  system.event.listener
  */
-final class UserActionFinalizeOTUListener implements \wcf\system\event\IEventListener
+final class UserActionFinalizeOTUListener implements IParameterizedEventListener
 {
     /**
      * @see \wcf\system\event\IEventListener::execute()
      */
-    public function execute($eventObj, $className, $eventName)
+    public function execute($eventObj, $className, $eventName, array &$_parameters)
     {
         if ($className == UserAction::class && $eventName == 'finalizeAction') {
             $action = $eventObj->getActionName();
