@@ -22,7 +22,11 @@ final class OptionEditOTUListener implements IParameterizedEventListener
     public function execute($eventObj, $className, $eventName, array &$_parameters)
     {
         if ($className == OptionHandler::class && $eventName == 'afterReadCache' && isset($eventObj->cachedOptions['register_forbidden_usernames'])) {
-            @$eventObj->cachedOptions['register_forbidden_usernames']->optionValue = UserOtuBlacklistEntry::replaceOTUTextList($eventObj->cachedOptions['register_forbidden_usernames']->optionValue);
+            $optionValue = $eventObj->cachedOptions['register_forbidden_usernames']->optionValue;
+            $cleanedOptionValue = UserOtuBlacklistEntry::replaceOTUTextList($optionValue);
+            if ($cleanedOptionValue !== $optionValue) {
+                @$eventObj->cachedOptions['register_forbidden_usernames']->optionValue = $cleanedOptionValue;
+            }
         } elseif ($className == OptionForm::class && $eventName == 'saved') {
             UserOtuBlacklistEntryEditor::resetCache();
         }
