@@ -2,8 +2,8 @@ FILES = $(shell find files -type f)
 
 all: be.bastelstu.max.wcf.otu.tar
 
-be.bastelstu.max.wcf.otu.tar: files.tar acptemplates.tar *.xml LICENSE *.sql language/*.xml
-	tar cvf be.bastelstu.max.wcf.otu.tar --numeric-owner --exclude-vcs -- files.tar acptemplates.tar *.xml LICENSE *.sql language/*.xml
+be.bastelstu.max.wcf.otu.tar: files.tar acptemplates.tar *.xml LICENSE language/*.xml
+	tar cvf be.bastelstu.max.wcf.otu.tar --numeric-owner --exclude-vcs -- files.tar acptemplates.tar *.xml LICENSE language/*.xml
 
 files.tar: $(FILES)
 	tar cvf files.tar --numeric-owner --exclude-vcs --transform='s,files/,,' -- $^
