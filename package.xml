@@ -31,7 +31,7 @@
 		<instruction type="option">option.xml</instruction>
 		<instruction type="acpMenu">acpMenu.xml</instruction>
 		<instruction type="language">language/*.xml</instruction>
-		<instruction type="script" run="standalone">acp/be.bastelstu.max.wcf.otu.install.php</instruction>
+		<instruction type="script" run="standalone">acp/install_be.bastelstu.max.wcf.otu.php</instruction>
 	</instructions>
 
 	<instructions type="update" fromversion="1.1.1">
