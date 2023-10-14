@@ -43,4 +43,16 @@ class UserOtuBlacklistEntry extends DatabaseObject
         // everything on the list will be treated as blacklisted by hand!
         return \str_replace([',One-Time-Username-Start-DO-NOT-REMOVE', ',One-Time-Username-End-DO-NOT-REMOVE'], '', $text);
     }
+
+    /**
+     * Returns the time this entry expires or `null` if it does not expire.
+     */
+    public function getExpiry(): \DateTimeImmutable|null
+    {
+        if (OTU_BLACKLIST_LIFETIME < 0) {
+            return null;
+        }
+
+        return new \DateTimeImmutable('@' . ($this->time + OTU_BLACKLIST_LIFETIME * 86400));
+    }
 }
