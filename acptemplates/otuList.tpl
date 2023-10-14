@@ -35,7 +35,22 @@
 				{foreach from=$objects item=entry}
 					<tr class="jsOTURow">
 						<td class="columnIcon">
-							<span class="icon icon16 fa-times jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->entryID}" data-confirm-message="{lang}wcf.acp.user.otu.delete.sure{/lang}"></span>
+							{if WCF_VERSION|str_starts_with:'5.5.'}
+								<span class="icon icon16 fa-times jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->entryID}" data-confirm-message="{lang}wcf.acp.user.otu.delete.sure{/lang}"></span>
+							{else}
+								<button
+									type="button"
+									class="jsDeleteButton jsTooltip"
+									title="{lang}wcf.global.button.delete{/lang}"
+									data-object-id="{$entry->entryID}"
+									data-confirm-message="{lang}wcf.acp.user.otu.delete.sure{/lang}"
+								>
+									<fa-icon
+										name="times"
+										size="16"
+									></fa-icon>
+								</button>
+							{/if}
 							
 							{event name='rowButtons'}
 						</td>
