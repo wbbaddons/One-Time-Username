@@ -66,8 +66,8 @@
 							{/if}
 						</td>
 						{if OTU_BLACKLIST_LIFETIME > -1}
-							<td class="columnText columnTime" title="{@($entry->time + OTU_BLACKLIST_LIFETIME * 86400)|date}">
-								{@($entry->time + OTU_BLACKLIST_LIFETIME * 86400)|dateDiff:TIME_NOW:true}
+							<td class="columnText columnTime" title="{@$entry->getExpiry()->getTimestamp()|date}">
+								{@$entry->getExpiry()->getTimestamp()|dateDiff:TIME_NOW:true}
 							</td>
 						{/if}
 						
