@@ -1,11 +1,5 @@
 {include file='header' pageTitle='wcf.acp.user.otu.list'}
 
-<script data-relocate="true">
-	$(function() {
-		new WCF.Action.Delete('wcf\\data\\user\\otu\\blacklist\\entry\\UserOtuBlacklistEntryAction', '.jsOTURow');
-	});
-</script>
-
 <header class="contentHeader">
 	<div class="contentHeaderTitle">
 		<h1 class="contentTitle">{lang}wcf.acp.user.otu.list{/lang}</h1>
@@ -20,8 +14,11 @@
 {/hascontent}
 
 {if $objects|count}
-	<div id="otuTableContainer" class="section tabularBox">
-		<table class="table">
+	<div class="section tabularBox">
+		<table
+			class="table jsObjectActionContainer"
+			data-object-action-class-name="wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryAction"
+		>
 			<thead>
 				<tr>
 					<th class="columnTitle columnUsername{if $sortField == 'username'} active {@$sortOrder}{/if}" colspan="2"><a href="{link controller='OTUList'}pageNo={@$pageNo}&sortField=username&sortOrder={if $sortField == 'username' && $sortOrder == 'ASC'}DESC{else}ASC{/if}{/link}">{lang}wcf.user.username{/lang}</a></th>
@@ -33,24 +30,14 @@
 			
 			<tbody>
 				{foreach from=$objects item=entry}
-					<tr class="jsOTURow">
+					<tr
+						class="jsObjectActionObject"
+						data-object-id="{$entry->entryID}"
+					>
 						<td class="columnIcon">
-							{if WCF_VERSION|str_starts_with:'5.5.'}
-								<span class="icon icon16 fa-times jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{$entry->entryID}" data-confirm-message="{lang}wcf.acp.user.otu.delete.sure{/lang}"></span>
-							{else}
-								<button
-									type="button"
-									class="jsDeleteButton jsTooltip"
-									title="{lang}wcf.global.button.delete{/lang}"
-									data-object-id="{$entry->entryID}"
-									data-confirm-message="{lang}wcf.acp.user.otu.delete.sure{/lang}"
-								>
-									<fa-icon
-										name="times"
-										size="16"
-									></fa-icon>
-								</button>
-							{/if}
+							{objectAction
+								action="delete"
+								confirmMessage='wcf.acp.user.otu.delete.sure'}
 							
 							{event name='rowButtons'}
 						</td>
