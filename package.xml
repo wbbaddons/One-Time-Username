@@ -5,8 +5,8 @@
 		<packagedescription><![CDATA[One-Time-Username is the simple solution to prevent confusion in your community, since it blocks the use of previously used usernames, after they become available for others, e.g. due to deletion or after renaming of users.]]></packagedescription>
 		<packagedescription language="de"><![CDATA[One-Time-Username ist die einfache Lösung, um Verwirrung in Ihrer Community zu verhindern, indem verwendete Benutzernamen, nach der Freigabe durch Umbenennung oder Löschung, automatisch gesperrt und nach einer einstellbaren Zeit entsperrt werden.]]></packagedescription>
 		<isapplication>0</isapplication>
-		<version>1.3.0</version>
-		<date>2023-09-23</date>
+		<version>1.4.0</version>
+		<date>2023-10-14</date>
 		<license><![CDATA[BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>]]></license>
 	</packageinformation>
 	
@@ -16,7 +16,7 @@
 	</authorinformation>
 	
 	<requiredpackages>
-		<requiredpackage minversion="5.5.15">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="5.5.18">com.woltlab.wcf</requiredpackage>
 	</requiredpackages>
 	
 	<excludedpackages>
@@ -35,6 +35,17 @@
 	</instructions>
 
 	<instructions type="update" fromversion="1.2.0">
+		<instruction type="file">files.tar</instruction>
+		<instruction type="database" run="standalone">acp/database/update_be.bastelstu.max.wcf.otu_1.3_step1.php</instruction>
+		<instruction type="database" run="standalone">acp/database/update_be.bastelstu.max.wcf.otu_1.3_step2.php</instruction>
+		<instruction type="acpTemplate">acptemplates.tar</instruction>
+		<instruction type="eventListener">eventListener.xml</instruction>
+		<instruction type="option">option.xml</instruction>
+		<instruction type="acpMenu">acpMenu.xml</instruction>
+		<instruction type="language">language/*.xml</instruction>
+	</instructions>
+
+	<instructions type="update" fromversion="1.3.0">
 		<instruction type="file">files.tar</instruction>
 		<instruction type="database" run="standalone">acp/database/update_be.bastelstu.max.wcf.otu_1.3_step1.php</instruction>
 		<instruction type="database" run="standalone">acp/database/update_be.bastelstu.max.wcf.otu_1.3_step2.php</instruction>
