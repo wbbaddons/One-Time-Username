@@ -32,10 +32,7 @@ final class UserActionFinalizeOTUListener implements IParameterizedEventListener
                 foreach ($eventObj->getObjects() as $object) {
                     if ($object instanceof UserEditor) {
                         // Skip if username has not been updated
-                        //
-                        // Also skip if username contains an asterisk (this is a wildcard!)
-                        // see https://github.com/WoltLab/WCF/issues/1704
-                        if ($action == 'update' && $parameters['data']['username'] == $object->username || \mb_strpos($object->username, '*') !== false) {
+                        if ($action == 'update' && $parameters['data']['username'] == $object->username) {
                             continue;
                         }
 
