@@ -6,9 +6,6 @@ use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
 use wcf\data\option\Option;
 use wcf\data\option\OptionAction;
-use wcf\data\package\Package;
-use wcf\system\database\util\PreparedStatementConditionBuilder;
-use wcf\system\WCF;
 use wcf\util\StringUtil;
 
 /**
@@ -35,36 +32,6 @@ class UserOtuBlacklistEntryEditor extends DatabaseObjectEditor implements IEdita
 
         // delete One-Time-Usernames from WCF username blacklist
         $blacklist = UserOtuBlacklistEntry::replaceOTUTextList($options['REGISTER_FORBIDDEN_USERNAMES']->optionValue);
-
-        if (Package::compareVersion(\WCF_VERSION, '6.0.0 Beta 1', '<')) {
-            // read One-Time-Username blacklist from database
-            $condition = new PreparedStatementConditionBuilder();
-            if (OTU_BLACKLIST_LIFETIME > -1) {
-                $condition->add('time > ?', [TIME_NOW - OTU_BLACKLIST_LIFETIME * 86400]);
-            } else {
-                $condition->add('1 = 1');
-            }
-
-            $sql = "SELECT	username
-                    FROM	wcf1_user_otu_blacklist_entry
-                    {$condition}
-                    ORDER	BY username ASC";
-            $stmt = WCF::getDB()->prepare($sql);
-            $stmt->execute($condition->getParameters());
-
-            $otUsernames = '';
-            while ($username = $stmt->fetchColumn()) {
-                $otUsernames .= $username . "\n";
-            }
-
-            // add One-Time-Usernames to blacklist
-            if ($otUsernames !== '') {
-                // leading comma, because it isn't a valid username
-                $blacklist .= "\n,One-Time-Username-Start-DO-NOT-REMOVE\n";
-                $blacklist .= $otUsernames;
-                $blacklist .= ',One-Time-Username-End-DO-NOT-REMOVE';
-            }
-        }
 
         // trim empty lines
         $blacklist = \preg_replace("~\n+~", "\n", StringUtil::trim($blacklist));
