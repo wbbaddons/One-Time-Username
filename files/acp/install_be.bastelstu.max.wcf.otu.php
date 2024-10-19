@@ -10,13 +10,7 @@
  * @license BSD 3-Clause License <http://opensource.org/licenses/BSD-3-Clause>
  */
 
-use wcf\data\user\otu\blacklist\entry\UserOtuBlacklistEntryEditor;
 use wcf\system\WCF;
-
-// little workaround, options have already been loaded and the constant won't be defined
-if (!\defined('OTU_BLACKLIST_LIFETIME')) {
-    \define('OTU_BLACKLIST_LIFETIME', 182);
-}
 
 // We don't check for "lastUsernameChange > 0", if this isn't set (how ever this may happen) TIME_NOW will be used.
 $sql = "SELECT      userID,
@@ -42,6 +36,3 @@ foreach ($entries as $entry) {
     $stmt->execute([$entry['username'], ($entry['time'] > 0) ? $entry['time'] : TIME_NOW, $entry['userID']]);
 }
 WCF::getDB()->commitTransaction();
-
-// rebuild the corresponding option
-UserOtuBlacklistEntryEditor::resetCache();
