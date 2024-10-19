@@ -2,7 +2,6 @@
 
 use wcf\system\event\EventHandler;
 use wcf\system\event\listener\UsernameValidatingOTUListener;
-use wcf\system\user\event\UsernameValidating;
 
 /**
  * Registers the UsernameValidatingOTUListener.
@@ -13,5 +12,6 @@ use wcf\system\user\event\UsernameValidating;
  */
 return static function (): void {
     $eventHandler = EventHandler::getInstance();
-    $eventHandler->register(UsernameValidating::class, UsernameValidatingOTUListener::class);
+    $eventHandler->register(\wcf\system\user\event\UsernameValidating::class, UsernameValidatingOTUListener::class);
+    $eventHandler->register(\wcf\event\user\UsernameValidating::class, UsernameValidatingOTUListener::class);
 };

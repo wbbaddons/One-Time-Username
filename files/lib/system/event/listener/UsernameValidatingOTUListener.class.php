@@ -3,7 +3,6 @@
 namespace wcf\system\event\listener;
 
 use wcf\system\database\util\PreparedStatementConditionBuilder;
-use wcf\system\user\event\UsernameValidating;
 use wcf\system\WCF;
 
 /**
@@ -15,8 +14,15 @@ use wcf\system\WCF;
  */
 final class UsernameValidatingOTUListener
 {
-    public function __invoke(UsernameValidating $event): void
-    {
+    public function __invoke(
+        \wcf\system\user\event\UsernameValidating|\wcf\event\user\UsernameValidating $event
+    ): void {
+        // Check if the username is already blocked to prevent
+        // an unnecessary database query.
+        if ($event->defaultPrevented()) {
+            return;
+        }
+
         if ($this->isBlocked($event->username)) {
             $event->preventDefault();
         }
