@@ -34,28 +34,6 @@
 		<instruction type="script" run="standalone">acp/install_be.bastelstu.max.wcf.otu.php</instruction>
 	</instructions>
 
-	<instructions type="update" fromversion="1.2.0">
-		<instruction type="file">files.tar</instruction>
-		<instruction type="database" run="standalone">acp/database/update_be.bastelstu.max.wcf.otu_1.3_step1.php</instruction>
-		<instruction type="database" run="standalone">acp/database/update_be.bastelstu.max.wcf.otu_1.3_step2.php</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="eventListener">eventListener.xml</instruction>
-		<instruction type="option">option.xml</instruction>
-		<instruction type="acpMenu">acpMenu.xml</instruction>
-		<instruction type="language">language/*.xml</instruction>
-	</instructions>
-
-	<instructions type="update" fromversion="1.3.0">
-		<instruction type="file">files.tar</instruction>
-		<instruction type="database" run="standalone">acp/database/update_be.bastelstu.max.wcf.otu_1.3_step1.php</instruction>
-		<instruction type="database" run="standalone">acp/database/update_be.bastelstu.max.wcf.otu_1.3_step2.php</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="eventListener">eventListener.xml</instruction>
-		<instruction type="option">option.xml</instruction>
-		<instruction type="acpMenu">acpMenu.xml</instruction>
-		<instruction type="language">language/*.xml</instruction>
-	</instructions>
-
 	<instructions type="update" fromversion="1.4.0">
 		<void />
 	</instructions>
