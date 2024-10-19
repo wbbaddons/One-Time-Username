@@ -16,7 +16,7 @@
 	</authorinformation>
 	
 	<requiredpackages>
-		<requiredpackage minversion="5.5.18">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="6.0.18">com.woltlab.wcf</requiredpackage>
 	</requiredpackages>
 	
 	<excludedpackages>
